@@ -1,0 +1,31 @@
+% Created by Kamil Niemcewicz 
+
+\newcommand{\leftPanel}
+{
+    % leftPanel colored rectangle
+    \begin{tikzpicture}[remember picture,overlay]
+        \node [rectangle, thick, draw=leftPanelBorder, fill=leftPanelBackground, anchor=north, minimum width=7.6cm, minimum height=35cm, ] (box) at (-4.5cm,4.8cm){};
+    \end{tikzpicture}
+    
+    % begin textblock with {width}{startingPositionX,startingPositionY}
+    \begin{textblock}{4.1}(0.45, 0.0)
+        
+        \vspace{4mm}
+        {\Huge\color{leftPanelTextHead} \textbf{\surname}}\\%
+        \vspace{1mm}%
+        {\Huge\color{leftPanelTextHead} \textbf{\name}}%
+        \vspace{1mm}\\%
+        {\Large\color{leftPanelText}\job}
+        
+        \profilesection{Contact}{\Contact}
+        
+        \profilesection{Skills}{\Skills}
+        
+        \profilesection{Languages}{{Polish - native, , English - B2}}%
+        \lineOfTextWPB {Reading/writing}{5.0}
+        \lineOfTextWPB {Verbal communication}{4.0}
+        
+        \profilesection{Additional skills}{\Additional}
+        
+    \end{textblock}    
+}

@@ -1,0 +1,105 @@
+% Created by Kamil Niemcewicz 
+
+%----------------------------------------------------------------------------------------
+%	 left panel
+%----------------------------------------------------------------------------------------
+
+% * * * * * * * * *
+% * Creates header and prints in new line every text passed in 2nd argument
+% * * * * * * * * *
+\newcommand{\profilesection}[2]%
+{%
+    \vspace{8pt}%
+    {%
+        \color{leftPanelTextHead} \huge #1 \\\rule[0.15\baselineskip]{6.09cm}{1pt}%
+    }%
+    
+    \foreach \n in #2%
+    {%
+        \lineOfText \n%
+    }%
+}
+
+% * * * * * * * * *
+% * Prints colored text
+% * * * * * * * * *
+\newcommand{\lineOfText}[1]{\color{leftPanelText} #1\\}
+
+
+% * * * * * * * * *
+% * Prints colored text with progress bar from valued 0.1 to 5.0
+% * * * * * * * * *
+\newcommand{\lineOfTextWPB}[2]{%
+#1\\%
+	\begin{tikzpicture}
+		\draw[fill=white,leftPanelRectangle](0,0.8) rectangle (#2 ,0.4);
+		\node [above right] at (0,0.4) {};
+	\end{tikzpicture}
+\\%
+	}
+
+%----------------------------------------------------------------------------------------
+%	 right panel
+%----------------------------------------------------------------------------------------
+
+% * * * * * * * * *
+% * Just renewing the section command. 
+% * First argument takes header text and coloring it's first three letters.
+% * * * * * * * * *
+\renewcommand{\section}[1]{
+	{%
+		\headingfont\color{headercolor}\LARGE\firstThreeColored #1\par%
+	}
+}
+
+\newenvironment{template}
+{%
+	\begin{tabular*}{\textwidth}
+	{
+	    @{\extracolsep{\fill}}
+    ll}
+   
+}
+    
+% * * * * * * * * *
+% * Section item.
+% * Arguments:
+% * 1st - date
+% * 2nd - company name 
+% * 3rd - text indented to the right side on 2nd argument's line
+% * 4rd - description
+% * * * * * * * * *
+\newcommand{\templateitem}[4]{%
+	#1&\parbox[t]{0.84\textwidth}{%
+		\textbf{#2}% 
+		\hfill%
+		{\footnotesize#3}\\%}
+		#4\vspace{\parsep}%
+	}\\
+}
+
+% * * * * * * * * *
+% * Section item without indent
+% * Arguments:
+% * 1st - date
+% * 2nd - company name 
+% * 3rd - text indented to the right side on 2nd argument's line
+% * 4rd - description
+% * * * * * * * * *
+\newcommand{\templateZeroIndent}[3]{%
+	\parbox[t]{1.03\textwidth}{%
+		\textbf{#1}% 
+		\hfill%
+		{\color{red}#2}\\%}
+		#3\vspace{\parsep}%
+	}\\
+}
+
+% * * * * * * * * *
+% * Takes word, color first three letters and returns it.
+% * * * * * * * * *
+\def\firstThreeColored#1#2#3{%
+	{%
+		\color{red} #1#2#3%
+	}%
+}
